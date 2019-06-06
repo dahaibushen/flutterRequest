@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:flutterdemotest/storesmodel_entity.dart';
+
 
 
 void getRequetData (Function callback) async {
@@ -11,12 +13,22 @@ void getRequetData (Function callback) async {
   var response = await request.close();
   if(response.statusCode == 200){
     responseBody = await response.transform(utf8.decoder).join();
-    var converDataToJson = jsonDecode(responseBody);
+
+    //转换为json同时生成map数据
+    Map converDataToJson = jsonDecode(responseBody);
     if(response.statusCode == HttpStatus.ok ){
-//      print('2222=====:${converDataToJson}');
+
+      //这里获取模型数据转换为model
+      StoresmodelEntity model1 = StoresmodelEntity.fromJson(converDataToJson);
+      StoresmodelRecordlist recordlist = model1.recordList[0];
+      StoresmodelRecordlistValuemap valuemap = recordlist.valueMap;
+      String title = recordlist.fieldSet[0];
+
+      print('====data=====:${valuemap.suggestkeyword}====:${title}===');
+
     callback(converDataToJson);
     }else{
-//      print('====failed=====');
+      print('====failed=====');
     callback(null);
     }
   }
