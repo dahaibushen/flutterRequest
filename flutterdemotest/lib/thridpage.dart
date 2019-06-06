@@ -1,10 +1,12 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutterdemotest/TestNotification.dart';
 
 class thridpage extends  StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+    addobserveNotivication();
     return  MaterialApp(
       home: createSecondPage(),
     );
@@ -21,4 +23,10 @@ class createSecondPage extends StatelessWidget{
       ),
     );
   }
+}
+
+void addobserveNotivication(){
+  new NotificationListener(onNotification: (TestNotification n){
+      print('===notification====${n}====');
+  },);
 }

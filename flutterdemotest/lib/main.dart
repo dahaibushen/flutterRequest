@@ -38,8 +38,6 @@ class  MyHomePageState extends State<MyHomePage>{
   var  _pagelit = [new firstpage(),new secondpage(),new thridpage()];
 
 
-
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
