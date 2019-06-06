@@ -23,13 +23,11 @@ void getRequetData (Function callback) async {
       StoresmodelRecordlist recordlist = model1.recordList[0];
       StoresmodelRecordlistValuemap valuemap = recordlist.valueMap;
       String title = recordlist.fieldSet[0];
-
       print('====data=====:${valuemap.suggestkeyword}====:${title}===');
-
     callback(converDataToJson);
     }else{
       print('====failed=====');
-    callback(null);
+      callback(null);
     }
   }
 }
