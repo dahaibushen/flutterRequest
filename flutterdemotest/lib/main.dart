@@ -3,6 +3,7 @@ import 'package:flutterdemotest/firstpage.dart';
 import 'package:flutterdemotest/seondpage.dart';
 import 'package:flutterdemotest/thridpage.dart';
 import 'package:flutterdemotest/fourthpage.dart';
+import 'package:flutterdemotest/fourthdetailsecondpage.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       routes: <String ,WidgetBuilder>{
           '/firstpage': (context)=>new firstpage(),
         '/fourthdetailpage': (context)=>new fourthpage(),
+        '/fourthdetailsecondpage': (context)=>new fourthdetailsecondpage(),
 
       },
 //      home: new firstpage(),
