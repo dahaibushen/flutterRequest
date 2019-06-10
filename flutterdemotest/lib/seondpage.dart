@@ -1,47 +1,71 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutterdemotest/TestNotification.dart';
 
-class secondpage extends  StatelessWidget{
+class seondpage extends StatelessWidget{
   @override
-
   Widget build(BuildContext context) {
     // TODO: implement build
-    addobserveNotivication();
-    return  MaterialApp(
-      home: createSecondPage(),
+    return MaterialApp(
+      home: createsecond(),
     );
   }
 }
-
-class createSecondPage extends StatelessWidget{
+class  createsecond extends StatefulWidget{
   @override
+  notificationstate createState() => notificationstate();
+}
 
+class notificationstate extends State<createsecond>{
+
+  @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(
-      body: Center(
-        child: RaisedButton(onPressed: (){
-          new TestNotification('发通知啦').dispatch(context);
-          print('======go go go======');
-        },
-          child: Text('点击按钮'),
-        )
+    return  Scaffold(
+      body: createNo(),
+    );
+  }
+}
+ class createNo extends StatefulWidget{
+ @override
+ nostate createState() => nostate();
+}
+
+class nostate extends State<createNo>{
+  String _msg = '';
+ @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return NotificationListener<secondNotification>(
+      onNotification: (notifi){
+        setState(() {
+          _msg = notifi.name + ' 9';
+          print('=====${ _msg }====');
+        });
+      },
+      child:  Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            //不理解：这个地方使用 context 跟 con怎么结果不一样呢
+            Builder(
+              builder: (con){
+                return RaisedButton(onPressed: (){
+                  print('=====sss==${con}===:${context}');
+                  secondNotification('hello').dispatch(con);
+                },
+                  child: Text('点击'),
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
-void addobserveNotivication(){
 
-  new NotificationListener(onNotification: (TestNotification n){
-    print('===notification====${n}====');
-       ScaffoldState().context.toString();
-       return true;
-  },
-   child: new Text('11122223333'),
-  
-  );
+class secondNotification extends Notification{
+  secondNotification(this.name);
+  final String name;
+
 }
-
-

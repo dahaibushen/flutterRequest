@@ -38,31 +38,48 @@ class homePageState extends State<createHome> {
     // TODO: implement build
     return Scaffold(
 
-      //切换navigationbar 选中的状态
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          new BottomNavigationBarItem(
-              icon: Icon(Icons.access_time), title: Text('小学')),
-          new BottomNavigationBarItem(
-              icon: Icon(Icons.print), title: Text('初中')),
-          new BottomNavigationBarItem(icon: Icon(Icons.map), title: Text('高中')),
-        ],
-        type: BottomNavigationBarType.fixed,
-//设定当前选中的下标
-        currentIndex: _currentIndex,
-//        onTap: currentOnTap(_currentIndex),
-        onTap: (int num) {
-          print('=====22222222===:${num}');
-          setState(() {
-            _currentIndex = num;
-          });
-        },
-//        //设定当前选中的下标
-//        currentIndex: _currentIndex,
-      ),
+      body: createNotification(),
     );
   }
 }
+
+class createNotification extends StatefulWidget{
+  @override
+  notificationState createState() => notificationState();
+}
+
+class notificationState extends State<createNotification>{
+  String _msg = '';
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return NotificationListener<MyNotification>(
+        onNotification: (notification){
+          setState(() {
+           _msg +=notification.msg+' 2';
+           print('=====444444==:${_msg}======');
+          });
+        },
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Builder(
+                builder: (context){
+                  return RaisedButton(onPressed: (){
+                    MyNotification('hello').dispatch(context);
+                  },
+                    child: Text('点击'),
+                  );
+                },
+              )
+            ],
+          ),
+        )
+    );
+  }
+}
+
 
 //网络请求方法
 void _httpClient()  {
@@ -88,4 +105,10 @@ void _httpClient()  {
 void _createmodel(){
    var detailmodel = new FlutterModel('东湖高新区', '小明');
    print('=====:${detailmodel.address}====:${detailmodel.name}=====');
+}
+
+class MyNotification extends Notification {
+  MyNotification(this.msg);
+
+  final String msg;
 }
