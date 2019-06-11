@@ -1,16 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutterdemotest/fourthdetailpage.dart';
 
-class fourthdetailsecondpage extends StatelessWidget{
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return MaterialApp(
-      home: createFourthPage(),
-    );
-  }
-}
-class createFourthPage extends StatelessWidget{
+
+class createFourthdetailsecondPage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

@@ -57,7 +57,7 @@ class fourpagestate extends State<createFourPage>{
 void clickatindex(int selectnum,BuildContext context){
   //通过router跳转到指定界面  这个地方是present 还是push 呢
   Navigator.push(context, MaterialPageRoute(builder: (context) {
-    return fourthdetailpage();
+    return createFourthPage();
   }));
 
 }
