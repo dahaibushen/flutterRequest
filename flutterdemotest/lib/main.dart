@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       routes: <String ,WidgetBuilder>{
           '/firstpage': (context)=>new firstpage(),
         '/fourthdetailpage': (context)=>new fourthpage(),
-        '/fourthdetailsecondpage': (context)=>new fourthdetailsecondpage(),
+        '/fourthdetailsecondpage': (context)=>new createFourthdetailsecondPage(),
 
       },
 //      home: new firstpage(),
